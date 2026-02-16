@@ -712,3 +712,12 @@ section {
         gap: 1rem;
     }
 }
+.hero-content {
+    text-align: center;
+}
+
+.hero-photo {
+    width: 250px;
+    margin-top: 20px;
+    border-radius: 12px;
+}
