@@ -292,10 +292,10 @@ section {
 }
 
 .about-content {
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 4rem;
-    margin-top: 3rem;
+    display: flex;
+    gap: 2rem;
+    align-items: center;  
+    margin-top: 2rem;
 }
 
 .about-text .lead {
@@ -313,7 +313,8 @@ section {
 
 .about-stats {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+   justify-content: center;
     gap: 2rem;
 }
 
