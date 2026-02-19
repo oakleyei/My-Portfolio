@@ -145,9 +145,9 @@ a {
     text-align: center;
     padding: 8rem 2rem 4rem;
     background: linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)), url('wrestling.jpg');
-background-size: cover;
-background-position: center;
-background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
     position: relative;
 }
 
@@ -157,7 +157,7 @@ background-attachment: fixed;
 .hero-title {
     font-size: 3.5rem;
     margin-bottom: 1.5rem;
-    color: var(--charcoal);
+    color: white;
     animation: fadeInUp 1s ease-out;
 }
 
