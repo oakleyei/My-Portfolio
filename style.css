@@ -164,7 +164,7 @@ a {
 .hero-subtitle {
     font-size: 1.4rem;
     font-weight: 400;
-    color: var(--dark-gray);
+    color: white
     margin-bottom: 3rem;
     animation: fadeInUp 1s ease-out 0.2s backwards;
 }
