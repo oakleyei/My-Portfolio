@@ -152,7 +152,8 @@ a {
 }
 
 .hero-content {
-    color: white;}
+    color: white;
+    margin-top: -8rem;
 
 .hero-content .hero-title {
     font-size: 3.5rem;
