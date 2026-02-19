@@ -298,10 +298,10 @@ section {
     margin-top: 2rem;
 }
 .about-photo {
-    max-width: 140px;
+    max-width: 200px;
     width: 100%;
     height: auto;
-    border-radius: 12px;
+    border-radius: 50%;
 }
 
 .about-text .lead {
