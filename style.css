@@ -167,6 +167,7 @@ a {
     color: white
     margin-bottom: 3rem;
     animation: fadeInUp 1s ease-out 0.2s backwards;
+   
 }
 
 .hero-cta {
@@ -175,6 +176,8 @@ a {
     justify-content: center;
     flex-wrap: wrap;
     animation: fadeInUp 1s ease-out 0.4s backwards;
+    position: absolute;      /* ADD THIS */
+    bottom: 3rem;            /* ADD THIS */
 }
 
 /* Scroll Indicator */
