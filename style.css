@@ -298,9 +298,10 @@ section {
     margin-top: 2rem;
 }
 .about-photo {
-   width: 180px;
-   border-radius: 12px;
-   flex-shrink: 30;  
+    max-width: 140px;
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
 }
 
 .about-text .lead {
