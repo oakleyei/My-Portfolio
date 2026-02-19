@@ -251,8 +251,8 @@ a {
 
 .btn-secondary {
     background-color: transparent;
-    color: var(--charcoal);
-    border-color: var(--charcoal);
+    color: white
+    border-color: white
 }
 
 .btn-secondary:hover {
