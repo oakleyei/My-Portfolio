@@ -297,6 +297,11 @@ section {
     align-items: center;  
     margin-top: 2rem;
 }
+.about-photo {
+   width: 280px;
+   border-radius: 12px;
+   flex-shrink: 0;  
+}
 
 .about-text .lead {
     font-size: 1.35rem;
