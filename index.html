@@ -1,298 +1,1052 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ethan Oakley</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts as fallbacks -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-</head>Hi, I'm Ethan Oakley
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ethan Oakley | Finance, Leadership &amp; Innovation</title>
+  <meta name="description" content="Finance professional, D1 NCAA athlete, UNC Chapel Hill graduate student, and entrepreneur. Explore my portfolio of work in finance, education, and leadership." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Lora:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    /* ===== RESET & BASE ===== */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --cream: #fffcf2;
+      --beige: #ccc5b9;
+      --dark-gray: #403d39;
+      --charcoal: #252422;
+      --burnt-orange: #eb5e28;
+      --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+      --font-serif: 'Lora', Georgia, serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--cream);
+      color: var(--dark-gray);
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background-color: var(--burnt-orange);
+      color: white;
+    }
+
+    a { text-decoration: none; color: inherit; }
+    ul { list-style: none; }
+    img { display: block; max-width: 100%; }
+    button, input, textarea { font-family: inherit; }
+
+    /* ===== NAVBAR ===== */
+    .navbar {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 50;
+      background: rgba(255, 252, 242, 0.95);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      border-bottom: 1px solid rgba(64, 61, 57, 0.1);
+      transition: box-shadow 0.3s;
+    }
+    .navbar.scrolled { box-shadow: 0 4px 12px rgba(0,0,0,0.08); backdrop-filter: blur(12px); }
+    .navbar-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.25rem 2rem;
+    }
+    .navbar-logo {
+      font-family: var(--font-serif);
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--charcoal);
+      transition: color 0.3s;
+    }
+    .navbar-logo:hover { color: var(--burnt-orange); }
+    .nav-links { display: flex; align-items: center; gap: 2.5rem; }
+    .nav-links a {
+      font-size: 0.95rem; font-weight: 500;
+      color: var(--dark-gray);
+      position: relative;
+      transition: color 0.3s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute; left: 0; bottom: -5px;
+      width: 0; height: 2px;
+      background: var(--burnt-orange);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--burnt-orange); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* Mobile hamburger */
+    .hamburger {
+      display: none;
+      background: none; border: none; cursor: pointer;
+      padding: 0.5rem;
+      color: var(--dark-gray);
+    }
+    .hamburger svg { width: 20px; height: 20px; }
+
+    .mobile-menu {
+      display: none;
+      border-top: 1px solid rgba(204,197,185,0.3);
+      background: var(--cream);
+      padding: 0.5rem 2rem 1rem;
+    }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a {
+      display: block;
+      padding: 0.5rem 0.75rem;
+      border-radius: 6px;
+      font-size: 0.9rem; font-weight: 500;
+      color: var(--dark-gray);
+      transition: background 0.2s, color 0.2s;
+    }
+    .mobile-menu a:hover { background: rgba(204,197,185,0.2); color: var(--burnt-orange); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: inline-flex; align-items: center; justify-content: center; }
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      padding: 8rem 2rem 4rem;
+      text-align: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: url('images/wrestling.jpg') center/cover no-repeat;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0.45);
+    }
+    .hero-content {
+      position: relative; z-index: 1;
+      color: #fff;
+      margin-top: -8rem;
+    }
+    .hero-content .subtitle {
+      margin-bottom: 1rem;
+      font-size: 0.875rem; font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(255,255,255,0.8);
+    }
+    .hero-content h1 {
+      font-family: var(--font-serif);
+      font-size: 3.5rem; font-weight: 700;
+      line-height: 1.15;
+      margin-bottom: 1.5rem;
+    }
+    .hero-content .tagline {
+      max-width: 560px; margin: 0 auto;
+      font-size: 1.125rem; line-height: 1.7;
+      color: rgba(255,255,255,0.9);
+    }
+
+    .hero-cta {
+      position: absolute; bottom: 3rem; left: 50%; transform: translateX(-50%);
+      z-index: 1;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1.5rem;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 1rem 2.5rem;
+      border-radius: 6px;
+      font-size: 1rem; font-weight: 600;
+      transition: all 0.3s;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--burnt-orange);
+      border-color: var(--burnt-orange);
+      color: var(--cream);
+    }
+    .btn-primary:hover { background: transparent; color: var(--burnt-orange); }
+    .btn-secondary {
+      background: rgba(0,0,0,0.6);
+      border-color: #fff;
+      color: #fff;
+    }
+    .btn-secondary:hover { background: var(--charcoal); color: var(--cream); }
+    .btn svg { width: 16px; height: 16px; }
+
+    .scroll-indicator {
+      position: absolute; bottom: 1rem; left: 50%; transform: translateX(-50%);
+      z-index: 1;
+      display: flex; flex-direction: column; align-items: center; gap: 0.25rem;
+      color: rgba(255,255,255,0.7);
+    }
+    .scroll-indicator svg { width: 20px; height: 20px; animation: bounce 1.5s infinite; }
+    .scroll-indicator span { font-size: 0.75rem; }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 { font-size: 2.5rem; }
+    }
+
+    /* ===== SECTION SHARED ===== */
+    .section { padding: 5rem 2rem; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .section-label {
+      text-align: center;
+      font-size: 0.875rem; font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: var(--burnt-orange);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      text-align: center;
+      font-family: var(--font-serif);
+      font-size: 2.75rem; font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+
+    /* ===== ABOUT ===== */
+    .about { background: var(--cream); }
+    .about-row {
+      margin-top: 2rem;
+      display: flex; align-items: center; gap: 2rem;
+      flex-direction: column;
+    }
+    @media (min-width: 769px) {
+      .about-row { flex-direction: row; }
+    }
+    .about-photo {
+      position: relative; flex-shrink: 0;
+    }
+    .about-photo-circle {
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 4px solid var(--beige);
+    }
+    .about-photo-circle img { width: 100%; height: 100%; object-fit: cover; }
+    .about-photo-accent {
+      position: absolute; bottom: -8px; right: -8px;
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: var(--burnt-orange);
+    }
+    .about-text { max-width: 640px; }
+    .about-text p {
+      font-size: 1.125rem; line-height: 1.7;
+      color: var(--dark-gray);
+      margin-bottom: 1.5rem;
+    }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .stats-row {
+      margin-top: 3rem;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem;
+    }
+    .stat-card {
+      border-left: 4px solid var(--burnt-orange);
+      background: rgba(204,197,185,0.3);
+      border-radius: 12px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    .stat-value {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 2.5rem; font-weight: 700;
+      color: var(--burnt-orange);
+    }
+    .stat-label {
+      display: block;
+      font-size: 0.95rem; font-weight: 500;
+      color: var(--dark-gray);
+    }
+
+    /* ===== EXPERIENCE ===== */
+    .experience { background: var(--beige); }
+    .timeline { position: relative; display: flex; flex-direction: column; gap: 3rem; }
+    .timeline-line {
+      display: none;
+      position: absolute; left: 50%; top: 0;
+      width: 2px; height: 100%;
+      background: rgba(235,94,40,0.3);
+      transform: translateX(-50%);
+    }
+    @media (min-width: 769px) {
+      .timeline-line { display: block; }
+    }
+    .timeline-item {
+      position: relative;
+      display: flex; flex-direction: column; align-items: center; gap: 1rem;
+    }
+    @media (min-width: 769px) {
+      .timeline-item { flex-direction: row; }
+      .timeline-item.left { flex-direction: row; }
+      .timeline-item.right { flex-direction: row-reverse; }
+    }
+    .timeline-dot {
+      display: none;
+      position: absolute; left: 50%; transform: translateX(-50%);
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      border: 2px solid var(--burnt-orange);
+      background: var(--cream);
+    }
+    .timeline-dot-inner {
+      position: absolute; inset: 3px;
+      border-radius: 50%;
+      background: var(--burnt-orange);
+    }
+    @media (min-width: 769px) {
+      .timeline-dot { display: block; }
+    }
+    .timeline-spacer { display: none; flex: 1; }
+    @media (min-width: 769px) { .timeline-spacer { display: block; } }
+    .timeline-card {
+      flex: 1;
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 1.5rem;
+      border: 2px solid transparent;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+      transition: all 0.3s;
+    }
+    .timeline-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--burnt-orange);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .timeline-card-header {
+      display: flex; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .timeline-icon {
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px;
+      background: rgba(235,94,40,0.1);
+    }
+    .timeline-icon svg { width: 20px; height: 20px; color: var(--burnt-orange); }
+    .timeline-period {
+      font-size: 0.875rem; font-weight: 600;
+      color: var(--burnt-orange);
+    }
+    .timeline-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem; font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+    .timeline-card .org {
+      font-size: 0.875rem; font-weight: 500;
+      color: var(--burnt-orange);
+      margin-bottom: 0.5rem;
+    }
+    .timeline-card .desc {
+      line-height: 1.7;
+      color: var(--dark-gray);
+      margin-bottom: 1rem;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+    .tag {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem; font-weight: 500;
+      background: rgba(204,197,185,0.4);
+      color: var(--dark-gray);
+    }
+
+    /* ===== EXPERTISE ===== */
+    .expertise { background: var(--beige); }
+    .expertise-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    @media (min-width: 769px) { .expertise-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1024px) { .expertise-grid { grid-template-columns: repeat(3, 1fr); } }
+
+    .expertise-card {
+      background: var(--cream);
+      border-radius: 12px;
+      padding: 2.5rem;
+      border: 2px solid transparent;
+      transition: all 0.3s;
+    }
+    .expertise-card:hover {
+      transform: translateY(-4px);
+      border-color: var(--burnt-orange);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    }
+    .expertise-card svg {
+      width: 48px; height: 48px;
+      color: var(--burnt-orange);
+      margin-bottom: 1.5rem;
+    }
+    .expertise-card h3 {
+      font-family: var(--font-serif);
+      font-size: 1.4rem; font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 1rem;
+    }
+    .expertise-card p {
+      line-height: 1.7;
+      color: var(--dark-gray);
+    }
+
+    .tools-section { margin-top: 4rem; text-align: center; }
+    .tools-section h3 {
+      font-family: var(--font-serif);
+      font-size: 1.875rem; font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 2rem;
+    }
+    .tools-list {
+      max-width: 900px; margin: 0 auto;
+      display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem;
+    }
+    .tool-pill {
+      padding: 0.75rem 1.5rem;
+      border-radius: 9999px;
+      border: 2px solid var(--cream);
+      background: var(--cream);
+      font-size: 0.95rem; font-weight: 500;
+      color: var(--dark-gray);
+      transition: all 0.3s;
+    }
+    .tool-pill:hover {
+      border-color: var(--burnt-orange);
+      background: rgba(235,94,40,0.1);
+    }
+
+    /* ===== PROJECTS ===== */
+    .projects { background: var(--cream); }
+    .projects-subtitle {
+      max-width: 700px; margin: 0 auto 3rem;
+      text-align: center;
+      font-size: 1.125rem;
+      color: var(--dark-gray);
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    @media (min-width: 1024px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .project-card {
+      border-radius: 12px;
+      border: 2px solid var(--beige);
+      background: var(--cream);
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--burnt-orange);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.1);
+    }
+    .project-preview {
+      height: 250px;
+      display: flex; align-items: center; justify-content: center;
+      border-bottom: 2px solid var(--beige);
+      background: linear-gradient(135deg, var(--beige), var(--cream));
+    }
+    .project-preview span {
+      font-size: 1.25rem; font-weight: 500;
+      color: rgba(64,61,57,0.5);
+    }
+    .project-body { padding: 2rem; }
+    .project-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+    .project-header h3 {
+      font-family: var(--font-serif);
+      font-size: 1.5rem; font-weight: 700;
+      color: var(--charcoal);
+    }
+    .project-arrow {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      color: var(--beige);
+      transition: color 0.3s;
+    }
+    .project-card:hover .project-arrow { color: var(--burnt-orange); }
+    .project-type {
+      font-size: 0.875rem; font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--burnt-orange);
+      margin-bottom: 1rem;
+    }
+    .project-body > p {
+      line-height: 1.7;
+      color: var(--dark-gray);
+      margin-bottom: 1.5rem;
+    }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 0.75rem; }
+    .project-tags .tag {
+      padding: 0.375rem 1rem;
+      font-size: 0.85rem;
+    }
+
+    /* ===== CONTACT ===== */
+    .contact { background: var(--beige); }
+    .contact-subtitle {
+      max-width: 700px; margin: 0 auto 3rem;
+      text-align: center;
+      font-size: 1.125rem;
+      color: var(--dark-gray);
+    }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 4rem;
+    }
+    @media (min-width: 1024px) {
+      .contact-grid { grid-template-columns: 1fr 1.5fr; }
+    }
+    .contact-info { display: flex; flex-direction: column; gap: 2rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1.5rem; }
+    .contact-icon {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      border-radius: 8px;
+      background: rgba(235,94,40,0.1);
+    }
+    .contact-icon svg { width: 24px; height: 24px; color: var(--burnt-orange); }
+    .contact-item h4 {
+      font-family: var(--font-serif);
+      font-size: 1.125rem; font-weight: 700;
+      color: var(--charcoal);
+      margin-bottom: 0.25rem;
+    }
+    .contact-item a {
+      color: var(--burnt-orange);
+      transition: opacity 0.3s;
+    }
+    .contact-item a:hover { text-decoration: underline; opacity: 0.7; }
+    .contact-item .muted { color: var(--dark-gray); }
+
+    .contact-form {
+      background: var(--cream);
+      border-radius: 12px;
+      border: 2px solid rgba(64,61,57,0.1);
+      padding: 2.5rem;
+    }
+    .form-row {
+      display: grid; grid-template-columns: 1fr; gap: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    @media (min-width: 640px) { .form-row { grid-template-columns: 1fr 1fr; } }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      color: var(--charcoal);
+      margin-bottom: 0.5rem;
+    }
+    .form-group input, .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 6px;
+      border: 2px solid var(--beige);
+      background: var(--cream);
+      color: var(--dark-gray);
+      font-size: 1rem;
+      transition: border-color 0.3s;
+      outline: none;
+    }
+    .form-group input:focus, .form-group textarea:focus { border-color: var(--burnt-orange); }
+    .form-group textarea { resize: none; }
+    .btn-submit {
+      width: 100%;
+      padding: 1rem 2.5rem;
+      border-radius: 6px;
+      border: 2px solid var(--burnt-orange);
+      background: var(--burnt-orange);
+      color: var(--cream);
+      font-size: 1rem; font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .btn-submit:hover { background: transparent; color: var(--burnt-orange); }
+
+    /* ===== FOOTER ===== */
+    .footer {
+      background: var(--charcoal);
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: var(--cream);
+    }
+    .footer p { margin-bottom: 0.5rem; }
+    .footer .tagline {
+      font-size: 0.95rem; font-style: italic;
+      color: rgba(255,252,242,0.8);
+    }
+  </style>
+</head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="#home" class="logo">Ethan Oakley</a>
-            <ul class="nav-menu">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#expertise">Expertise</a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-   <!-- Hero Section -->
-<section id="home" class="hero">
-    <div class="hero-content">
-        <h1 class="hero-title">Finance. Leadership. Innovation.</h1>
-        <p class="hero-subtitle">
-            Finance Professional | D1 Athlete | Entrepreneur
-        </p>
+  <!-- ===== NAVBAR ===== -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#home" class="navbar-logo">Ethan Oakley</a>
+      <ul class="nav-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#expertise">Expertise</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>
+      </button>
+    </div>
+    <div class="mobile-menu" id="mobileMenu">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#experience">Experience</a>
+      <a href="#expertise">Expertise</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
 
-        <!-- YOUR PHOTO -->
-       
-
-<div class="hero-cta">
- <a href="Resume/Ethan Oakley Resume.pdf" class="btn-secondary" target="_blank">
-    Download Resume
-</a>
-
-        </div>
-   
-</section>
-    <!-- About Section -->
-    <section id="about" class="about-section">
-        <div class="container">
-            <h2 class="section-title">About Me</h2>
-           <div class="about-content">
-    <div class="about-text">
-        <p class="lead">
-            I'm a graduate of Appalachian State University with a B.S. in Business Management and currently pursuing a Master's in Educational Innovation, Technology, and Entrepreneurship at UNC Chapel Hill's Peabody School of Education. My background spans private wealth management, business development, and AI research. I've worked alongside Forbes-listed advisors at Legacy Private Client Services, hold a FINRA SIE certification, and completed Bloomberg Market Concepts training. Beyond finance, I served as a Division I NCAA Wrestling Team Captain at both App State and UNC, and co-founded the Athletes in Business Club at UNC to connect student-athletes with entrepreneurship and career opportunities.
-        </p>
-    </div>
-    <img src="ethan.jpg" alt="Ethan Oakley" class="about-photo">
-</div>
-<div class="about-stats">
-    <div class="stat-item">
-        <span class="stat-number">2x</span>
-        <span class="stat-label">NCAA Team Captain</span>
-    </div>
-    <div class="stat-item">
-        <span class="stat-number">D1</span>
-        <span class="stat-label">Athlete</span>
-    </div>
-    <div class="stat-item">
-        <span class="stat-number">3.5</span>
-        <span class="stat-label">GPA</span>
-    </div>
-</div>
-        </div>
+  <main>
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home">
+      <div class="hero-bg"></div>
+      <div class="hero-content">
+        <p class="subtitle">Finance Professional &middot; D1 Athlete &middot; Entrepreneur</p>
+        <h1>Finance. Leadership. Innovation.</h1>
+        <p class="tagline">Building at the intersection of finance, education, and technology. From the wrestling mat to the boardroom.</p>
+      </div>
+      <div class="hero-cta">
+        <a href="Ethan_Oakley_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"/></svg>
+          Download Resume
+        </a>
+        <a href="#about" class="btn btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"/></svg>
+          Learn More
+        </a>
+      </div>
+      <div class="scroll-indicator">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 13.5 12 21m0 0-7.5-7.5M12 21V3"/></svg>
+        <span>Scroll</span>
+      </div>
     </section>
 
-    <!-- Expertise Section -->
-    <section id="expertise" class="expertise-section">
-        <div class="container">
-            <h2 class="section-title">Areas of Expertise</h2>
-            <div class="expertise-grid">
-                <div class="expertise-card">
-                    <div class="expertise-icon">📚</div>
-                    <h3>Curriculum Development</h3>
-                    <p>Designing comprehensive learning programs aligned with educational objectives and learner needs</p>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">💻</div>
-                    <h3>E-Learning Design</h3>
-                    <p>Creating engaging online courses using tools like Articulate Storyline, Rise, and Adobe Captivate</p>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">🎯</div>
-                    <h3>Learning Strategy</h3>
-                    <p>Developing data-driven learning strategies that improve performance and engagement</p>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">🎨</div>
-                    <h3>Visual Design</h3>
-                    <p>Crafting intuitive, accessible interfaces that enhance the learning experience</p>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">📊</div>
-                    <h3>Learning Analytics</h3>
-                    <p>Measuring learning outcomes and iterating designs based on assessment data</p>
-                </div>
-                <div class="expertise-card">
-                    <div class="expertise-icon">🤝</div>
-                    <h3>Stakeholder Management</h3>
-                    <p>Collaborating with SMEs, faculty, and teams to deliver quality learning solutions</p>
-                </div>
+    <!-- ===== ABOUT ===== -->
+    <section class="section about" id="about">
+      <div class="section-inner">
+        <p class="section-label">About</p>
+        <h2 class="section-title">About Me</h2>
+        <div class="about-row">
+          <div class="about-photo">
+            <div class="about-photo-circle">
+              <img src="images/ethan.jpg" alt="Ethan Oakley" />
             </div>
-
-            <!-- Skills/Tools -->
-            <div class="skills-section">
-                <h3 class="subsection-title">Tools & Technologies</h3>
-                <div class="skills-list">
-                    <span class="skill-tag">Articulate Storyline</span>
-                    <span class="skill-tag">Articulate Rise</span>
-                    <span class="skill-tag">Adobe Captivate</span>
-                    <span class="skill-tag">Camtasia</span>
-                    <span class="skill-tag">Canvas LMS</span>
-                    <span class="skill-tag">Moodle</span>
-                    <span class="skill-tag">Adobe Creative Suite</span>
-                    <span class="skill-tag">Figma</span>
-                    <span class="skill-tag">H5P</span>
-                    <span class="skill-tag">SCORM/xAPI</span>
-                </div>
-            </div>
+            <div class="about-photo-accent"></div>
+          </div>
+          <div class="about-text">
+            <p>I'm a graduate of Appalachian State University with a B.S. in Business Management and currently pursuing a Master's in Educational Innovation, Technology, and Entrepreneurship at UNC Chapel Hill's Peabody School of Education.</p>
+            <p>My background spans private wealth management, business development, and AI research. I've worked alongside Forbes-listed advisors at Legacy Private Client Services, hold a FINRA SIE certification, and completed Bloomberg Market Concepts training.</p>
+            <p>Beyond finance, I served as a Division I NCAA Wrestling Team Captain at both App State and UNC, and co-founded the Athletes in Business Club at UNC to connect student-athletes with entrepreneurship and career opportunities.</p>
+          </div>
         </div>
+        <div class="stats-row">
+          <div class="stat-card"><span class="stat-value">2x</span><span class="stat-label">NCAA Team Captain</span></div>
+          <div class="stat-card"><span class="stat-value">D1</span><span class="stat-label">Athlete</span></div>
+          <div class="stat-card"><span class="stat-value">3.5</span><span class="stat-label">GPA</span></div>
+          <div class="stat-card"><span class="stat-value">SIE</span><span class="stat-label">FINRA Certified</span></div>
+        </div>
+      </div>
     </section>
 
-    <!-- Portfolio Section -->
-    <section id="portfolio" class="portfolio-section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-description">
-                A selection of learning experiences I've designed across various contexts and platforms
-            </p>
+    <!-- ===== EXPERIENCE ===== -->
+    <section class="section experience" id="experience">
+      <div class="section-inner">
+        <p class="section-label">Journey</p>
+        <h2 class="section-title">Experience &amp; Education</h2>
+        <div class="timeline">
+          <div class="timeline-line"></div>
 
-            <div class="portfolio-grid">
-                <!-- Project 1 -->
-                <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="project-placeholder">Project Preview</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Professional Development Course</h3>
-                        <p class="project-type">E-Learning | Corporate Training</p>
-                        <p class="project-description">
-                            Interactive online course for employee onboarding featuring scenario-based 
-                            learning and microlearning modules. Reduced training time by 40%.
-                        </p>
-                        <div class="project-tags">
-                            <span>Articulate Storyline</span>
-                            <span>Scenario-Based</span>
-                            <span>Gamification</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 2 -->
-                <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="project-placeholder">Project Preview</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Higher Ed Online Course</h3>
-                        <p class="project-type">Academic Course Design</p>
-                        <p class="project-description">
-                            Redesigned undergraduate course for fully online delivery using UDL principles. 
-                            Achieved 92% student satisfaction rating.
-                        </p>
-                        <div class="project-tags">
-                            <span>Canvas LMS</span>
-                            <span>UDL</span>
-                            <span>Accessibility</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 3 -->
-                <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="project-placeholder">Project Preview</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Compliance Training Module</h3>
-                        <p class="project-type">Regulatory Training</p>
-                        <p class="project-description">
-                            Engaging compliance training that transformed dry regulatory content into 
-                            story-driven scenarios with branching pathways.
-                        </p>
-                        <div class="project-tags">
-                            <span>Articulate Rise</span>
-                            <span>Mobile-First</span>
-                            <span>SCORM</span>
-                        </div>
-                    </div>
-                </article>
-
-                <!-- Project 4 -->
-                <article class="portfolio-item">
-                    <div class="portfolio-image">
-                        <div class="project-placeholder">Project Preview</div>
-                    </div>
-                    <div class="portfolio-content">
-                        <h3>Educational Video Series</h3>
-                        <p class="project-type">Video-Based Learning</p>
-                        <p class="project-description">
-                            Created and produced 15-part video tutorial series with accompanying 
-                            interactive assessments and job aids.
-                        </p>
-                        <div class="project-tags">
-                            <span>Camtasia</span>
-                            <span>Video Production</span>
-                            <span>Job Aids</span>
-                        </div>
-                    </div>
-                </article>
+          <!-- Item 1 - Left -->
+          <div class="timeline-item left">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-spacer"></div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <span class="timeline-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg>
+                </span>
+                <span class="timeline-period">2024 - Present</span>
+              </div>
+              <h3>M.A. Educational Innovation, Technology &amp; Entrepreneurship</h3>
+              <p class="org">UNC Chapel Hill - Peabody School of Education</p>
+              <p class="desc">Researching AI applications in education, developing innovative curriculum frameworks, and studying the intersection of technology and entrepreneurship in learning.</p>
+              <div class="tag-row">
+                <span class="tag">AI Research</span>
+                <span class="tag">EdTech</span>
+                <span class="tag">Entrepreneurship</span>
+              </div>
             </div>
+          </div>
+
+          <!-- Item 2 - Right -->
+          <div class="timeline-item right">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-spacer"></div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <span class="timeline-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+                </span>
+                <span class="timeline-period">2023 - 2024</span>
+              </div>
+              <h3>Private Wealth Management Intern</h3>
+              <p class="org">Legacy Private Client Services</p>
+              <p class="desc">Worked alongside Forbes-listed advisors in private wealth management. Gained hands-on experience in financial planning, portfolio analysis, and high-net-worth client relations.</p>
+              <div class="tag-row">
+                <span class="tag">Wealth Management</span>
+                <span class="tag">Financial Planning</span>
+                <span class="tag">Client Relations</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 3 - Left -->
+          <div class="timeline-item left">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-spacer"></div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <span class="timeline-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.438 60.438 0 0 0-.491 6.347A48.62 48.62 0 0 1 12 20.904a48.62 48.62 0 0 1 8.232-4.41 60.46 60.46 0 0 0-.491-6.347m-15.482 0a50.636 50.636 0 0 0-2.658-.813A59.906 59.906 0 0 1 12 3.493a59.903 59.903 0 0 1 10.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.717 50.717 0 0 1 12 13.489a50.702 50.702 0 0 1 7.74-3.342M6.75 15a.75.75 0 1 0 0-1.5.75.75 0 0 0 0 1.5Zm0 0v-3.675A55.378 55.378 0 0 1 12 8.443m-7.007 11.55A5.981 5.981 0 0 0 6.75 15.75v-1.5"/></svg>
+                </span>
+                <span class="timeline-period">2020 - 2024</span>
+              </div>
+              <h3>B.S. Business Management</h3>
+              <p class="org">Appalachian State University</p>
+              <p class="desc">Earned a 3.5 GPA while serving as D1 NCAA Wrestling Team Captain. Completed Bloomberg Market Concepts training and FINRA SIE certification.</p>
+              <div class="tag-row">
+                <span class="tag">Business</span>
+                <span class="tag">Finance</span>
+                <span class="tag">Leadership</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 4 - Right -->
+          <div class="timeline-item right">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-spacer"></div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <span class="timeline-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+                </span>
+                <span class="timeline-period">2024 - Present</span>
+              </div>
+              <h3>Co-Founder, Athletes in Business Club</h3>
+              <p class="org">UNC Chapel Hill</p>
+              <p class="desc">Founded and lead a student organization connecting student-athletes with entrepreneurship resources, mentorship, and career development opportunities.</p>
+              <div class="tag-row">
+                <span class="tag">Entrepreneurship</span>
+                <span class="tag">Leadership</span>
+                <span class="tag">Community</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Item 5 - Left -->
+          <div class="timeline-item left">
+            <div class="timeline-dot"><div class="timeline-dot-inner"></div></div>
+            <div class="timeline-spacer"></div>
+            <div class="timeline-card">
+              <div class="timeline-card-header">
+                <span class="timeline-icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M20.25 14.15v4.25c0 1.094-.787 2.036-1.872 2.18-2.087.277-4.216.42-6.378.42s-4.291-.143-6.378-.42c-1.085-.144-1.872-1.086-1.872-2.18v-4.25m16.5 0a2.18 2.18 0 0 0 .75-1.661V8.706c0-1.081-.768-2.015-1.837-2.175a48.114 48.114 0 0 0-3.413-.387m4.5 8.006c-.194.165-.42.295-.673.38A23.978 23.978 0 0 1 12 15.75c-2.648 0-5.195-.429-7.577-1.22a2.016 2.016 0 0 1-.673-.38m0 0A2.18 2.18 0 0 1 3 12.489V8.706c0-1.081.768-2.015 1.837-2.175a48.111 48.111 0 0 1 3.413-.387m7.5 0V5.25A2.25 2.25 0 0 0 13.5 3h-3a2.25 2.25 0 0 0-2.25 2.25v.894m7.5 0a48.667 48.667 0 0 0-7.5 0"/></svg>
+                </span>
+                <span class="timeline-period">2020 - Present</span>
+              </div>
+              <h3>D1 NCAA Wrestling - Team Captain</h3>
+              <p class="org">Appalachian State &amp; UNC Chapel Hill</p>
+              <p class="desc">Two-time NCAA Division I Wrestling Team Captain. Competing at the highest collegiate level while maintaining academic excellence and leadership roles.</p>
+              <div class="tag-row">
+                <span class="tag">Athletics</span>
+                <span class="tag">Leadership</span>
+                <span class="tag">Discipline</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-        <div class="container">
-            <h2 class="section-title">Let's Connect</h2>
-            <p class="section-description">
-                Interested in collaborating or have a project in mind? I'd love to hear from you.
-            </p>
-
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-method">
-                        <span class="contact-icon">📧</span>
-                        <div>
-                            <h4>Email</h4>
-                          <a href="mailto:ethanoakley1456@yahoo.com">
-    ethanoakley1456@yahoo.com
-</a>
-                    </div>
-                    <div class="contact-method">
-                        <span class="contact-icon">💼</span>
-                        <div>
-                            <h4>LinkedIn</h4>
-                         <a href="https://www.linkedin.com/in/ethanoakley/" target="_blank">
-    linkedin.com/in/ethanoakley
-</a>
-                    <div class="contact-method">
-                        <span class="contact-icon">🌐</span>
-                        <div>
-                            <h4>Portfolio</h4>
-                            <a href="#" target="_blank">View Full Portfolio</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form-wrapper">
-                    <form class="contact-form">
-                        <p class="form-note">
-                            <em>Note: Connect this form to Formspree or similar service to receive messages</em>
-                        </p>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" id="name" name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" required>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="subject">Subject</label>
-                            <input type="text" id="subject" name="subject" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" rows="5" required></textarea>
-                        </div>
-                        <button type="submit" class="btn-primary">Send Message</button>
-                    </form>
-                </div>
-            </div>
+    <!-- ===== EXPERTISE ===== -->
+    <section class="section expertise" id="expertise">
+      <div class="section-inner">
+        <p class="section-label">Skills</p>
+        <h2 class="section-title">Areas of Expertise</h2>
+        <div class="expertise-grid">
+          <div class="expertise-card">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25"/></svg>
+            <h3>Curriculum Development</h3>
+            <p>Designing comprehensive learning programs aligned with educational objectives and learner needs.</p>
+          </div>
+          <div class="expertise-card">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 17.25v1.007a3 3 0 0 1-.879 2.122L7.5 21h9l-.621-.621A3 3 0 0 1 15 18.257V17.25m6-12V15a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 15V5.25m18 0A2.25 2.25 0 0 0 18.75 3H5.25A2.25 2.25 0 0 0 3 5.25m18 0V12a2.25 2.25 0 0 1-2.25 2.25H5.25A2.25 2.25 0 0 1 3 12V5.25"/></svg>
+            <h3>E-Learning Design</h3>
+            <p>Creating engaging online courses using tools like Articulate Storyline, Rise, and Adobe Captivate.</p>
+          </div>
+          <div class="expertise-card">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/></svg>
+            <h3>Learning Strategy</h3>
+            <p>Developing data-driven learning strategies that improve performance and engagement.</p>
+          </div>
+          <div class="expertise-card">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L6.832 19.82a4.5 4.5 0 0 1-1.897 1.13l-2.685.8.8-2.685a4.5 4.5 0 0 1 1.13-1.897L16.863 4.487Zm0 0L19.5 7.125"/></svg>
+            <h3>Visual Design</h3>
+            <p>Crafting intuitive, accessible interfaces that enhance the learning experience.</p>
+          </div>
+          <div class="expertise-card">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 0 1 3 19.875v-6.75ZM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V8.625ZM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 0 1-1.125-1.125V4.125Z"/></svg>
+            <h3>Learning Analytics</h3>
+            <p>Measuring learning outcomes and iterating designs based on assessment data.</p>
+          </div>
+          <div class="expertise-card">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19.128a9.38 9.38 0 0 0 2.625.372 9.337 9.337 0 0 0 4.121-.952 4.125 4.125 0 0 0-7.533-2.493M15 19.128v-.003c0-1.113-.285-2.16-.786-3.07M15 19.128v.106A12.318 12.318 0 0 1 8.624 21c-2.331 0-4.512-.645-6.374-1.766l-.001-.109a6.375 6.375 0 0 1 11.964-3.07M12 6.375a3.375 3.375 0 1 1-6.75 0 3.375 3.375 0 0 1 6.75 0Zm8.25 2.25a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z"/></svg>
+            <h3>Stakeholder Management</h3>
+            <p>Collaborating with SMEs, faculty, and teams to deliver quality learning solutions.</p>
+          </div>
         </div>
+
+        <div class="tools-section">
+          <h3>Tools &amp; Technologies</h3>
+          <div class="tools-list">
+            <span class="tool-pill">Articulate Storyline</span>
+            <span class="tool-pill">Articulate Rise</span>
+            <span class="tool-pill">Adobe Captivate</span>
+            <span class="tool-pill">Camtasia</span>
+            <span class="tool-pill">Canvas LMS</span>
+            <span class="tool-pill">Moodle</span>
+            <span class="tool-pill">Adobe Creative Suite</span>
+            <span class="tool-pill">Figma</span>
+            <span class="tool-pill">H5P</span>
+            <span class="tool-pill">SCORM/xAPI</span>
+            <span class="tool-pill">Bloomberg Terminal</span>
+            <span class="tool-pill">Microsoft Excel</span>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2024 Your Name. All rights reserved.</p>
-            <p class="footer-tagline">Designing learning that matters.</p>
-        </div>
-    </footer>
+    <!-- ===== PROJECTS ===== -->
+    <section class="section projects" id="projects">
+      <div class="section-inner">
+        <p class="section-label">Work</p>
+        <h2 class="section-title" style="margin-bottom: 1rem;">Featured Projects</h2>
+        <p class="projects-subtitle">A selection of learning experiences designed across various contexts and platforms.</p>
+        <div class="projects-grid">
 
-    <script src="script.js"></script>
+          <div class="project-card">
+            <div class="project-preview"><span>Project Preview</span></div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3>Professional Development Course</h3>
+                <svg class="project-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
+              </div>
+              <p class="project-type">E-Learning | Corporate Training</p>
+              <p>Interactive online course for employee onboarding featuring scenario-based learning and microlearning modules. Reduced training time by 40%.</p>
+              <div class="project-tags">
+                <span class="tag">Articulate Storyline</span>
+                <span class="tag">Scenario-Based</span>
+                <span class="tag">Gamification</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-preview"><span>Project Preview</span></div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3>Higher Ed Online Course</h3>
+                <svg class="project-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
+              </div>
+              <p class="project-type">Academic Course Design</p>
+              <p>Redesigned undergraduate course for fully online delivery using UDL principles. Achieved 92% student satisfaction rating.</p>
+              <div class="project-tags">
+                <span class="tag">Canvas LMS</span>
+                <span class="tag">UDL</span>
+                <span class="tag">Accessibility</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-preview"><span>Project Preview</span></div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3>Compliance Training Module</h3>
+                <svg class="project-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
+              </div>
+              <p class="project-type">Regulatory Training</p>
+              <p>Engaging compliance training that transformed dry regulatory content into story-driven scenarios with branching pathways.</p>
+              <div class="project-tags">
+                <span class="tag">Articulate Rise</span>
+                <span class="tag">Mobile-First</span>
+                <span class="tag">SCORM</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-preview"><span>Project Preview</span></div>
+            <div class="project-body">
+              <div class="project-header">
+                <h3>Educational Video Series</h3>
+                <svg class="project-arrow" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="m4.5 19.5 15-15m0 0H8.25m11.25 0v11.25"/></svg>
+              </div>
+              <p class="project-type">Video-Based Learning</p>
+              <p>Created and produced 15-part video tutorial series with accompanying interactive assessments and job aids.</p>
+              <div class="project-tags">
+                <span class="tag">Camtasia</span>
+                <span class="tag">Video Production</span>
+                <span class="tag">Job Aids</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT ===== -->
+    <section class="section contact" id="contact">
+      <div class="section-inner">
+        <p class="section-label">Contact</p>
+        <h2 class="section-title" style="margin-bottom: 1rem;">Let's Connect</h2>
+        <p class="contact-subtitle">Interested in collaborating or have a project in mind? I'd love to hear from you.</p>
+        <div class="contact-grid">
+          <div class="contact-info">
+            <div class="contact-item">
+              <span class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75"/></svg>
+              </span>
+              <div>
+                <h4>Email</h4>
+                <a href="mailto:ethanoakley1456@yahoo.com">ethanoakley1456@yahoo.com</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M13.19 8.688a4.5 4.5 0 0 1 1.242 7.244l-4.5 4.5a4.5 4.5 0 0 1-6.364-6.364l1.757-1.757m13.35-.622 1.757-1.757a4.5 4.5 0 0 0-6.364-6.364l-4.5 4.5a4.5 4.5 0 0 0 1.242 7.244"/></svg>
+              </span>
+              <div>
+                <h4>LinkedIn</h4>
+                <a href="https://linkedin.com/in/ethanoakley" target="_blank" rel="noopener noreferrer">linkedin.com/in/ethanoakley</a>
+              </div>
+            </div>
+            <div class="contact-item">
+              <span class="contact-icon">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418"/></svg>
+              </span>
+              <div>
+                <h4>Portfolio</h4>
+                <span class="muted">You are here</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form">
+            <form>
+              <div class="form-row">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label>Name</label>
+                  <input type="text" />
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label>Email</label>
+                  <input type="email" />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Subject</label>
+                <input type="text" />
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                <textarea rows="5"></textarea>
+              </div>
+              <button type="submit" class="btn-submit">Send Message</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>&copy; 2025 Ethan Oakley. All rights reserved.</p>
+    <p class="tagline">Designing learning that matters.</p>
+  </footer>
+
+  <script>
+    // Navbar scroll shadow
+    var navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > 40) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Mobile menu toggle
+    var hamburger = document.getElementById('hamburger');
+    var mobileMenu = document.getElementById('mobileMenu');
+    hamburger.addEventListener('click', function() {
+      mobileMenu.classList.toggle('open');
+      // Swap icon
+      var isOpen = mobileMenu.classList.contains('open');
+      hamburger.innerHTML = isOpen
+        ? '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12"/></svg>'
+        : '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>';
+    });
+
+    // Close mobile menu on link click
+    var mobileLinks = mobileMenu.querySelectorAll('a');
+    mobileLinks.forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.remove('open');
+        hamburger.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"/></svg>';
+      });
+    });
+  </script>
+
 </body>
 </html>
