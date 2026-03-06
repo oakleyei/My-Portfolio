@@ -301,13 +301,12 @@ section {
     align-items: center;  
     margin-top: 2rem;
 }
-.about-photo {
-    max-width: 200px;
-    width: 100%;
-    height: auto;
+ .about-photo {
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     object-fit: cover;
-    object-position: center top;
+    object-position: center 25%;
 }
 
 .about-text .lead {
